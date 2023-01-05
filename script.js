@@ -50,4 +50,8 @@ function game() {
     } else {
         alert( "It's a tie!");
     }
+
+    finalOutcome = (`You won ${userScore}, lost ${botScore} and tied ${5 - (userScore + botScore)} times.`);
+    console.log(finalOutcome);
+    return finalOutcome;
 }
