@@ -7,3 +7,9 @@ This project strives to solidify and apply foundational javascript concepts such
     - variable naming,
     - conditional statements,
     - and functions.
+
+Skills Developed:
+    - Utilising for loops 
+    - Refining skillful usage of conditionals
+    - Understood more of return values and how to utilise them.
+    - Enhance planning in project design. 
