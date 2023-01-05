@@ -26,3 +26,28 @@ function playRound(playerSelection, computerSelection=getComputerChoice()) {
         return playRound(playerSelection);
     }
 }
+function game() {
+    let userScore = 0;
+    let botScore = 0;
+    for (let i=0; i < 5; i++) {
+        let playerSelection = prompt("Your move?", 'rock');
+        result = playRound(playerSelection);
+
+        outcome = result.split(' ');
+        if (outcome[1] === "won!") {
+            userScore += 1; 
+        } else if (outcome[1] === "lose!") {
+            botScore += 1;
+        } 
+        console.log(result)
+    }
+
+    
+    if (userScore > botScore) {
+        alert( "Congrats! You won against the bot!");
+    } else if (botScore > userScore) {
+        alert( "Oh no! You lost to a BOT!");
+    } else {
+        alert( "It's a tie!");
+    }
+}
