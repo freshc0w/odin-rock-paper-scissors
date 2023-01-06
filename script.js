@@ -6,9 +6,14 @@ const options = ["rock", "paper", "scissors"];
 
 // add body text
 const container = document.querySelector('#container')
-const content = document.createElement('p')
-content.textContent = 'bat'
-container.appendChild(content)
+
+//Running score
+let userScore = 0
+let botScore = 0
+scores = document.createElement('h2')
+container.appendChild(scores)
+updateScores()
+
 
 // Add eventListeners for each corresponding buttons w/ arg in playRound
 // depending on the btn.
@@ -21,6 +26,10 @@ paperBtn.addEventListener("click", function () {
 scissorsBtn.addEventListener("click", function () {
     playRound('scissors');
 });
+
+function updateScores() {
+    scores.textContent = `Scores: \nUser: ${userScore}\nComputer: ${botScore}`;
+}
 
 function getComputerChoice() {
     randomChoice = Math.floor(Math.random() * options.length) // Randomly returns a number in [0, 1, 2]
@@ -43,13 +52,16 @@ function playRound(playerSelection) {
     if (playerSelection === computerSelection) {
         content.textContent = 'It\'s a tie.';
     } else if (win) {
+        userScore += 1;
         content.textContent = `You won! ${playerSelection} beats ${computerSelection}`; // Winning conditions satisfied
     } else if (lose) {
+        botScore += 1;
         content.textContent = `You lose! ${computerSelection} beats ${playerSelection}`;
     } else {
         content.textContent = "Invalid Move! Try again!";
     }
     container.appendChild(content)
+    updateScores()
 }
 
 
