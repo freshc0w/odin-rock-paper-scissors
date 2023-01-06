@@ -13,3 +13,7 @@ Skills Developed:
     - Refining skillful usage of conditionals
     - Understood more of return values and how to utilise them.
     - Enhance planning in project design. 
+
+
+Further skills developed merging HTML/CSS skills w/ Javascript using DOM such as :
+    - Adding event listeners.
