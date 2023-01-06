@@ -4,6 +4,12 @@ const paperBtn = document.querySelector('#paper');
 const scissorsBtn = document.querySelector('#scissors');
 const options = ["rock", "paper", "scissors"];
 
+// add body text
+const container = document.querySelector('#container')
+const content = document.createElement('p')
+content.textContent = 'bat'
+container.appendChild(content)
+
 // Add eventListeners for each corresponding buttons w/ arg in playRound
 // depending on the btn.
 rockBtn.addEventListener("click", function () {
@@ -22,7 +28,7 @@ function getComputerChoice() {
 }
 
 function playRound(playerSelection) {
-    console.log(playerSelection); //for testing - to see if playerselection is from btns. 
+    const content = document.createElement('p')
 
     computerSelection = getComputerChoice()
 
@@ -35,17 +41,15 @@ function playRound(playerSelection) {
     ||(computerSelection === "scissors" && playerSelection === "paper")
     
     if (playerSelection === computerSelection) {
-        console.log("It's a tie!");
-        return;
+        content.textContent = 'It\'s a tie.';
     } else if (win) {
-        console.log(`You won! ${playerSelection} beats ${computerSelection}`); // Winning conditions satisfied
-        return;
+        content.textContent = `You won! ${playerSelection} beats ${computerSelection}`; // Winning conditions satisfied
     } else if (lose) {
-        console.log(`You lose! ${computerSelection} beats ${playerSelection}`);
-        return;
+        content.textContent = `You lose! ${computerSelection} beats ${playerSelection}`;
     } else {
-        console.log("Invalid Move! Try again!")
+        content.textContent = "Invalid Move! Try again!";
     }
+    container.appendChild(content)
 }
 
 
