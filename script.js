@@ -1,15 +1,29 @@
-const btns = document.querySelectorAll('button');
-btns.forEach(btn => btn.addEventListener('click', playRound))
+//Initisalise rock, paper, scissors button.
+const rockBtn = document.querySelector('#rock')
+const paperBtn = document.querySelector('#paper')
+const scissorsBtn = document.querySelector('#scissors')
+const options = ["rock", "paper", "scissors"];
+
+// Add eventListeners for each corresponding buttons w/ arg in playRound
+// depending on the btn.
+rockBtn.addEventListener("click", function () {
+    playRound('rock');
+})
+paperBtn.addEventListener("click", function () {
+    playRound('paper');
+})
+scissorsBtn.addEventListener("click", function () {
+    playRound('scissors');
+})
+
 
 function getComputerChoice() {
-    const options = ["rock", "paper", "scissors"]; 
     randomChoice = Math.floor(Math.random() * options.length) // Randomly returns a number in [0, 1, 2]
     return options[randomChoice]
 }
 
-function playRound() {
-    let playerSelection = prompt('rock, paper or scissors?');
-    console.log(playerSelection);
+function playRound(playerSelection) {
+    console.log(playerSelection); //for testing - to see if playerselection is from btns. 
 
     computerSelection = getComputerChoice()
 
@@ -22,14 +36,16 @@ function playRound() {
     ||(computerSelection === "scissors" && playerSelection === "paper")
     
     if (playerSelection === computerSelection) {
-        return console.log("It's a tie!");
+        console.log("It's a tie!");
+        return;
     } else if (win) {
-        return console.log(`You won! ${playerSelection} beats ${computerSelection}`); // Winning conditions satisfied
+        console.log(`You won! ${playerSelection} beats ${computerSelection}`); // Winning conditions satisfied
+        return;
     } else if (lose) {
-        return console.log(`You lose! ${computerSelection} beats ${playerSelection}`);
+        console.log(`You lose! ${computerSelection} beats ${playerSelection}`);
+        return;
     } else {
         console.log("Invalid Move! Try again!")
-        playRound()
     }
 }
 
