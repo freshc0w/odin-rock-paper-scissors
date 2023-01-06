@@ -5,14 +5,19 @@ const scissorsBtn = document.querySelector('#scissors');
 const options = ["rock", "paper", "scissors"];
 
 // add body text
-const container = document.querySelector('#container')
+const container = document.querySelector('#container');
 
 //Running score
-let userScore = 0
-let botScore = 0
-scores = document.createElement('h2')
-container.appendChild(scores)
-updateScores()
+let userScore = 0;
+let botScore = 0;
+scores = document.createElement('h2');
+container.appendChild(scores);
+updateScores();
+
+//Condition of winning
+condition = document.createElement('h3');
+condition.textContent = "Best to five wins."
+container.appendChild(condition)
 
 
 // Add eventListeners for each corresponding buttons w/ arg in playRound
@@ -35,6 +40,22 @@ function getComputerChoice() {
     randomChoice = Math.floor(Math.random() * options.length) // Randomly returns a number in [0, 1, 2]
     return options[randomChoice]
 }
+
+function announceWinOrLose() {
+    const content = document.createElement('p');
+    content.style.cssText = 'font-weight: 800;'
+    if (userScore === 5) {
+        content.textContent = 'Congrats you won against the computer!\n Game is over... restarting now.';
+        userScore = 0;
+        botScore = 0;
+    } else if (botScore === 5) {
+        content.textContent = 'You lost to the computer!\n Game is over... restarting now.';
+        userScore = 0;
+        botScore = 0;
+    }
+    container.appendChild(content);
+}
+
 
 function playRound(playerSelection) {
     const content = document.createElement('p')
@@ -60,8 +81,9 @@ function playRound(playerSelection) {
     } else {
         content.textContent = "Invalid Move! Try again!";
     }
-    container.appendChild(content)
-    updateScores()
+    container.appendChild(content);
+    announceWinOrLose();
+    updateScores();
 }
 
 
